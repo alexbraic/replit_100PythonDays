@@ -1,6 +1,3 @@
 # replit_100PythonDays
 
-# Day1
-- strings and multi-line strings
-# Day2
-- variables and user input
+I want to see if i can actually do this, next to everything else i have to do on a daily basis.
