@@ -20,16 +20,16 @@ while again.lower() != "n":
         print("Wrong letter, try again 😉")
         p1 = input("Player1, your move: ")
 
-    p2 = input("Player1, your move: ")
+    p2 = input("Player2, your move: ")
     while p2 not in ["r", "p", "s"]:
         print("Wrong letter, try again 😉")
-        p2 = input("Player1, your move: ")
+        p2 = input("Player2, your move: ")
     print()
 
     # compare and set winner or draw
     if p1 == "r" and p2 == "s":
         print("Player1's rock smashes Player2's scissors!")
-        print("Player1 wins!")
+        print("Player1 wins!\n")
     elif p1 == "r" and p2 == "p":
         print("Player2's paper covers Player1's rock!")
         print("Player2 wins!\n")
