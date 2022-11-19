@@ -43,7 +43,7 @@ while again.lower() != "n":
 
     if p1 == "s" and p2 == "p":
         print("Player1's scissors cuts Player2's paper!")
-        print("Player2 wins!\n")
+        print("Player1 wins!\n")
     elif p1 == "s" and p2 == "r":
         print("Player2's rock smashes Player1's scissors!")
         print("Player2 wins!\n")
