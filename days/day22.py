@@ -14,7 +14,7 @@ print(random.randint(5,10))
 c = [1, 2, 3]
 print()
 
-def repeat(x, rep=0):
+def repeat(x, rep=1):
   for i in range(rep):
     print(x)
 
