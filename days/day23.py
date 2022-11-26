@@ -34,12 +34,3 @@ while loggedin == False:
     loggedin = True
 
 print(f"Welcome back {user}!")
-
-
-# will look at this tomorrow
-def newUser():
-    newUname = input("Enter username: ")
-    newUpass = input("Enter password: ")
-
-
-users = {"username": "Joe", "password": "passwd"}
