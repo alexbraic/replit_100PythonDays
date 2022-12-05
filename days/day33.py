@@ -19,19 +19,23 @@
 #  printList()
 
 # toDo list manager
-# view
-# add
-# edit (which)
+# view, add, edit (which)
+
+
+def printIt():
+    i = 0
+    for item in tdList:
+        print(f"{i + 1}. {item}")
+        i += 1
+    print()
+
+
 tdList = []
 count = 0
 print("=== ToDo ===")
 print()
 while True:
-
-    for item in tdList:
-        print(f"{tdList[item]} {item}")
-    print()
-
+    printIt()
     if count == 0:
         item = input("Add item or Exit?: ")
     else:
@@ -52,9 +56,10 @@ while True:
                 print("Item not in list.")
         print()
     elif item == "edit":
-        it = int(input("Which item to edit?: "))
-        tdList.pop(it - 1)
-        tdList.insert(it, it)
+        x = int(input("Which item to edit?: "))
+        tdList.pop(x - 1)
+        newX = input("Enter value to replace: ")
+        tdList.insert(x - 1, newX)
         print()
     elif item == "exit":
         print("See you next time!")
