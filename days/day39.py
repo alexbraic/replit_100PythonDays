@@ -1,4 +1,4 @@
-import random
+touchimport random
 
 list = ["first", "second", "third", "apple"]
 
