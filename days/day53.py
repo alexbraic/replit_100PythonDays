@@ -17,6 +17,7 @@ def addItem():
 
 
 def viewItems():
+    # solution 1
     counted = {}
     for item in inventory:
         if item in counted:
@@ -26,11 +27,26 @@ def viewItems():
     for key, value in counted.items():
         print(f"{key:^20} {value}")
 
+    # solution 2
+    # seen = []
+    # for item in inventory:
+    #   if item not in seen:
+    #     print(f"{item} {inventory.count(item)}")
+    #     seen.append(item)
 
+    # solution 3
+    # uniqueItems = set(inventory)
+    # for item in uniqueItems:
+    #   print(f"{item} {inventory.count(item)}")
+
+      
 def removeItem():
     rmItem = input("Select item to remove: ")
     if rmItem in inventory:
-        inventory.pop(inventory.index(rmItem))
+      inventory.remove(rmItem)
+      # inventory.pop(inventory.index(rmItem))
+    else:
+      print("Item not in inventory")
 
 
 while True:
