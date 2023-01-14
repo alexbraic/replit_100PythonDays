@@ -2,25 +2,50 @@ import os, time, datetime, random
 from replit import db
 
 
-def intro():
-  user = input("Usename: ")
-  password = input("Password: ")
-  salt = random.randrange(0000, 9999)
-
-  set_pass = f'{password}{salt}'
-  set_pass = hash(set_pass)
-  db[user] = {"username": user, "password": set_pass, "salt": salt}
-
-
-def check_user():
+def login():
   keys = db.keys()
-  if keys != 0:
-    user_check = input("Username: ").strip()
-    if user_check != db[user_check]["username"]:
-      print("Not your diary")
+  if len(keys) == 0:
+    time.sleep(1)
+    os.system("clear")
+    print("=== Set User ===")
+    user = input("Usename: ")
+    password = input("Password: ")
+    salt = random.randrange(1000, 9999)
+
+    set_pass = hash(f'{password}{salt}')
+    db[user] = {"username": user, "password": set_pass, "salt": salt}
+
+  else:
+    time.sleep(1)
+    os.system("clear")
+    print("=== Login ===")
+    username = input("Username: ").strip()
+
+    if username not in keys:
+      print("Sorry, Not your diary.")
       exit()
 
-    pass_check = input("Password: ").strip()
+    salt = db[username]["salt"]
+
+    count = 0
+    while count < 3:
+      password = input("Password: ").strip()
+      pass_check = hash(f'{password}{salt}')
+
+      if db[username]["password"] == pass_check:
+        print()
+        print(f"Welcome, {username}!")
+
+        time.sleep(2)
+        os.system("clear")
+        break
+      else:
+        count += 1
+        if count == 3:
+          print("Too many failed attempts, check your credentials.")
+          exit()
+        print("Wrong password! Try again.")
+        print()
 
 
 def addEntry():
@@ -30,13 +55,11 @@ def addEntry():
   print(f'Diary entry for my {timestamp}.')
   print()
   entry = input("> ")
-
   db[timestamp] = entry
 
 
 def viewEntry():
-  keys = db.keys()
-
+  keys = db.prefix("2")
   for key in keys:
     time.sleep(1)
     os.system("clear")
@@ -46,16 +69,27 @@ def viewEntry():
     opt = input("Next or exit? > ")
 
     if opt.lower()[0] == "e":
+      time.sleep(1)
+      os.system("clear")
       break
+  time.sleep(1)
+  os.system("clear")
 
+
+login()
 
 while True:
   keys = db.keys()
-  if keys != 0:
-    intro()
-  os.system("clear")
+  #for key in keys:
+  #  print(db[key])
   menu = input("1. Add\n2. View\n> ")
   if menu == "1":
     addEntry()
   else:
     viewEntry()
+
+# print a part of a key
+#keys = db.keys()
+#  for key in keys:
+#    if key == "joe":
+#      print(db[key]['salt'])
