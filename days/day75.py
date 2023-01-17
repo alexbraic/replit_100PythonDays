@@ -1,0 +1,1 @@
+# The request for today was  to add social media links to a static html file. Because this is a small variation on day 74 and did not havetime to work on it, i skipped creating it.
