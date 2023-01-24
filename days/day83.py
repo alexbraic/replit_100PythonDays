@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='/files/template')
 
 my_reflections = {}
 
@@ -37,13 +37,16 @@ def index():
 
 @app.route('/<page_number>', methods=["GET"])
 def number(page_number):
+  # register the arguments and change accordingly
   get = request.args
+  # default style as you go on the page
   style = "regular"
+  # change the style (theme) to the new one
   if get != {}:
     style = get["style"]
 
   page = ""
-  f = open("templates/base_index.html", "r")
+  f = open("files/template/base_index.html", "r")
   page = f.read()
   f.close()
 
@@ -51,6 +54,7 @@ def number(page_number):
   page = page.replace("{link}", my_reflections[page_number]["link"])
   page = page.replace("{reflection}",
                       my_reflections[page_number]['reflection'])
+  # replaces the theme file usigng the GET argument
   page = page.replace("{style}", style)
 
   return page
